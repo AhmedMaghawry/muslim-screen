@@ -11,9 +11,10 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/licence-MIT-cfffcf?style=flat&labelColor=15181e" alt="MIT"></a>
 </p>
 
-<p align="center">
-  <img src="docs/muslim-screen-hero.png" alt="Muslim Screen: prayer times, weather and a Quran verse over a mosque photo" width="800">
-</p>
+| | |
+|---|---|
+| ![Muslim Screen: prayer times, weather and a Quran verse over a mosque photo](docs/muslim-screen-hero.png) | ![Home screen: next-prayer line, Hijri date and rotating reminder below the clock](docs/muslim-screen-desktop.png) |
+| *Muslim Screen, the on-demand/idle screensaver* | *The home screen itself: next prayer, Hijri date, rotating reminder* |
 
 This is a fork of [CleanYourTV](https://github.com/Gathin23/cleanyourtv) — strips the bloatware
 from any Android TV or Google TV over Wi-Fi and replaces the ad-filled home screen with a clean,
@@ -21,6 +22,10 @@ Apple-TV-style launcher — with one addition: **Muslim Screen**, a second scree
 prayer times for your location, the weather, and a Quran verse that rotates every minute, over a
 live photo. Press **Back** at Home any time to preview it on demand, without waiting for the TV to
 go idle. **No root, no cable, nothing uninstalled, and a one-line restore if you change your mind.**
+
+<p align="center">
+  <a href="#install"><b>⬇️ Jump straight to Install — about 15 minutes ⬇️</b></a>
+</p>
 
 ![Before: stock Google TV home with a sponsored ad. After: the Clean Your TV launcher](docs/stock-vs-new-side.jpg)
 
@@ -48,7 +53,10 @@ developer options, allow your computer once, and the rest is standard Android to
 The bloat differs by brand, so the prompt has your coding assistant discover it on your TV and ask
 before touching anything you might use.
 
-## Quick start
+## Install
+
+> **TL;DR:** turn on USB debugging, paste [`PROMPT.md`](PROMPT.md) into a coding assistant, answer
+> a few questions. About 15 minutes, done on your own computer and TV — nothing is sent anywhere.
 
 You need a computer on the same Wi-Fi as the TV and a coding assistant with shell access.
 Suggested: Claude Code on [0G Private Computer](https://pc.0g.ai), one API key for 100+ models.
