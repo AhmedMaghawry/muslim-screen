@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Screensaver (SalaamDream): prayer times, weather and a Quran verse over a live mosque photo. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF10141C">
+
+    <ImageView
+        android:id="@+id/dreamBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:contentDescription="@null" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/dream_salaam_scrim" />
+
+    <LinearLayout
+        android:id="@+id/dreamContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="40dp">
+
+        <!-- Header: brand + location (left), date/Hijri + clock (right). -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="☾"
+                        android:textColor="#D9C99A5B"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Muslim"
+                        android:textColor="#E6FFFFFF"
+                        android:textSize="18sp"
+                        android:letterSpacing="0.04"
+                        android:fontFamily="@font/outfit_medium" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="Screen"
+                        android:textColor="#80FFFFFF"
+                        android:textSize="18sp"
+                        android:letterSpacing="0.04"
+                        android:fontFamily="@font/outfit_light" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/locationLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#99FFFFFF"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/outfit_regular" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="end"
+                    android:layout_marginEnd="20dp">
+
+                    <TextClock
+                        android:id="@+id/dateLine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:format12Hour="EEEE, d MMMM yyyy"
+                        android:format24Hour="EEEE, d MMMM yyyy"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/outfit_regular" />
+
+                    <TextView
+                        android:id="@+id/hijriLine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:textColor="#B3C99A5B"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/outfit_regular" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="bottom">
+
+                    <TextClock
+                        android:id="@+id/clockHour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:format12Hour="h:mm"
+                        android:format24Hour="HH:mm"
+                        android:textColor="#F2FFFFFF"
+                        android:textSize="46sp"
+                        android:fontFamily="@font/outfit_light"
+                        android:includeFontPadding="false" />
+
+                    <TextClock
+                        android:id="@+id/clockAmPm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginBottom="8dp"
+                        android:format12Hour="a"
+                        android:format24Hour=""
+                        android:textColor="#99FFFFFF"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/outfit_medium"
+                        android:textAllCaps="true" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Middle: Quran verse (left, flexible) + today's prayers panel (right, fixed width). -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="28dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="32dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="——  THE HOLY QURAN  ——"
+                    android:textColor="#80C99A5B"
+                    android:textSize="12sp"
+                    android:letterSpacing="0.14"
+                    android:fontFamily="@font/outfit_medium" />
+
+                <!-- Bounded, not wrap_content: autosize below only shrinks/grows text when the
+                     TextView itself has a real height to fit into, so short and long verses both
+                     use the full available area instead of a fixed size that over- or under-fits. -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/verseArabic"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="3"
+                        android:layout_marginTop="12dp"
+                        android:textColor="#F2FFFFFF"
+                        android:textDirection="rtl"
+                        android:gravity="start|center_vertical"
+                        android:fontFamily="@font/outfit_regular"
+                        android:maxLines="3"
+                        android:ellipsize="end"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="14sp"
+                        android:autoSizeMaxTextSize="40sp"
+                        android:autoSizeStepGranularity="1sp" />
+
+                    <TextView
+                        android:id="@+id/verseTranslation"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:layout_marginTop="12dp"
+                        android:textColor="#CCFFFFFF"
+                        android:gravity="center_vertical"
+                        android:fontFamily="@font/outfit_regular"
+                        android:maxLines="4"
+                        android:ellipsize="end"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="11sp"
+                        android:autoSizeMaxTextSize="20sp"
+                        android:autoSizeStepGranularity="1sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/verseReference"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textColor="#99FFFFFF"
+                    android:textSize="13sp"
+                    android:letterSpacing="0.06"
+                    android:fontFamily="@font/outfit_medium" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="360dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/salaam_prayer_panel"
+                android:padding="14dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/salaam_next_prayer_bg"
+                    android:padding="6dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NEXT PRAYER"
+                        android:textColor="#99C99A5B"
+                        android:textSize="10sp"
+                        android:letterSpacing="0.1"
+                        android:fontFamily="@font/outfit_medium" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/nextPrayerName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="#F2FFFFFF"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/outfit_medium" />
+
+                        <TextView
+                            android:id="@+id/nextPrayerCountdown"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#F2FFFFFF"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/outfit_regular" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/nextPrayerAt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:textColor="#80FFFFFF"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/outfit_regular" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="#1AFFFFFF" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TODAY'S PRAYERS"
+                        android:textColor="#80FFFFFF"
+                        android:textSize="10sp"
+                        android:letterSpacing="0.08"
+                        android:fontFamily="@font/outfit_medium" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ADHAN"
+                        android:textColor="#80FFFFFF"
+                        android:textSize="10sp"
+                        android:letterSpacing="0.08"
+                        android:fontFamily="@font/outfit_medium" />
+                </LinearLayout>
+
+                <!-- Weighted, not summed fixed heights: always fits whatever room match_parent above
+                     actually left, compacting the five rows together rather than clipping the last ones. -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/rowFajr"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Fajr"
+                        android:textColor="#E6FFFFFF"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/outfit_regular" />
+
+                    <TextView
+                        android:id="@+id/timeFajr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/outfit_regular" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rowDhuhr"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Dhuhr"
+                        android:textColor="#E6FFFFFF"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/outfit_regular" />
+
+                    <TextView
+                        android:id="@+id/timeDhuhr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/outfit_regular" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rowAsr"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Asr"
+                        android:textColor="#E6FFFFFF"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/outfit_regular" />
+
+                    <TextView
+                        android:id="@+id/timeAsr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/outfit_regular" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rowMaghrib"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Maghrib"
+                        android:textColor="#E6FFFFFF"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/outfit_regular" />
+
+                    <TextView
+                        android:id="@+id/timeMaghrib"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/outfit_regular" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rowIsha"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Isha"
+                        android:textColor="#E6FFFFFF"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/outfit_regular" />
+
+                    <TextView
+                        android:id="@+id/timeIsha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/outfit_regular" />
+                </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/prayerFooter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="#66FFFFFF"
+                    android:textSize="10sp"
+                    android:fontFamily="@font/outfit_regular" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Bottom: weather now (left) + the day ahead strip (right). -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WEATHER NOW"
+                    android:textColor="#80FFFFFF"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.1"
+                    android:fontFamily="@font/outfit_medium" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/weatherTemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#F2FFFFFF"
+                        android:textSize="34sp"
+                        android:fontFamily="@font/outfit_light" />
+
+                    <ImageView
+                        android:id="@+id/weatherIcon"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_marginStart="10dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/weatherDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#CCFFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/outfit_regular" />
+
+                <TextView
+                    android:id="@+id/weatherFeels"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#80FFFFFF"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/outfit_regular" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="64dp"
+                android:layout_marginHorizontal="24dp"
+                android:background="#1AFFFFFF" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="THE DAY AHEAD"
+                        android:textColor="#80FFFFFF"
+                        android:textSize="11sp"
+                        android:letterSpacing="0.1"
+                        android:fontFamily="@font/outfit_medium" />
+
+                    <TextView
+                        android:id="@+id/weatherHighLow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#80FFFFFF"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/outfit_regular" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/hourlyRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal" />
+
+                <TextView
+                    android:id="@+id/weatherUpdated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="#4DFFFFFF"
+                    android:textSize="10sp"
+                    android:fontFamily="@font/outfit_regular" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Footer: quiet reminder (left) + photo credit (right). -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Breathe. Reflect. Remember."
+                android:textColor="#4DFFFFFF"
+                android:textSize="11sp"
+                android:fontFamily="@font/outfit_regular" />
+
+            <TextView
+                android:id="@+id/footerCredit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#4DFFFFFF"
+                android:textSize="10sp"
+                android:letterSpacing="0.06"
+                android:fontFamily="@font/outfit_regular" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

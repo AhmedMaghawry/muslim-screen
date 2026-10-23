@@ -78,6 +78,12 @@ final class Config {
     final boolean overlayApplied;
     /** Festive skin from a theme (festival, festival_until, greeting, accent_color); {@link Festival#NONE} if none. */
     final Festival festival;
+    /** Unsplash access key for Muslim Screen's background photo (config.xml unsplash_access_key); empty means no photo. */
+    final String unsplashAccessKey;
+    /** Aladhan calculation method for Muslim Screen's prayer times (config.xml prayer_calc_method). */
+    final int prayerCalcMethod;
+    /** Asr juristic school for Muslim Screen: 0 Standard, 1 Hanafi (config.xml prayer_asr_school). */
+    final int prayerAsrSchool;
 
     private Config(List<String> dockApps, boolean fillDock, List<String> hiddenApps, String liveTvPackage,
                    String liveTvAction, String sourcePanelService, String sourcePanelAction, String inputAction,
@@ -85,7 +91,7 @@ final class Config {
                    boolean shamsiDate, boolean moduleCards, boolean reducedMotion, boolean dockTitle, boolean dockRow, boolean reorderButton, String vpnApp,
                    boolean showHomeSettingsShortcut, boolean showStats, boolean appLibrary, int backgroundColor, int skyIntensity,
                    int[] settingsKeycodes, boolean settingsKeyPanel, File wallpaper, boolean overlayApplied,
-                   Festival festival) {
+                   Festival festival, String unsplashAccessKey, int prayerCalcMethod, int prayerAsrSchool) {
         this.dockApps = Collections.unmodifiableList(dockApps);
         this.fillDock = fillDock;
         this.hiddenApps = Collections.unmodifiableList(hiddenApps);
@@ -115,6 +121,9 @@ final class Config {
         this.wallpaper = wallpaper;
         this.overlayApplied = overlayApplied;
         this.festival = festival;
+        this.unsplashAccessKey = unsplashAccessKey;
+        this.prayerCalcMethod = prayerCalcMethod;
+        this.prayerAsrSchool = prayerAsrSchool;
     }
 
     /** The folder the theme tools push into; null when external storage is unavailable. */
@@ -150,6 +159,9 @@ final class Config {
         int skyIntensity = res.getInteger(R.integer.sky_intensity);
         int[] settingsKeycodes = res.getIntArray(R.array.settings_key_keycodes);
         boolean settingsKeyPanel = res.getBoolean(R.bool.settings_key_panel);
+        String unsplashKey = res.getString(R.string.unsplash_access_key).trim();
+        int prayerMethod = res.getInteger(R.integer.prayer_calc_method);
+        int prayerSchool = res.getInteger(R.integer.prayer_asr_school);
         boolean applied = false;
 
         File dir = dir(ctx);
@@ -183,6 +195,9 @@ final class Config {
             skyIntensity = integer(json, "sky_intensity", skyIntensity, 0, 100);
             settingsKeycodes = intArray(json, "settings_key_keycodes", settingsKeycodes);
             settingsKeyPanel = bool(json, "settings_key_panel", settingsKeyPanel);
+            unsplashKey = string(json, "unsplash_access_key", unsplashKey);
+            prayerMethod = integer(json, "prayer_calc_method", prayerMethod, 0, 23);
+            prayerSchool = integer(json, "prayer_asr_school", prayerSchool, 0, 1);
         }
         // A theme push or reset invalidates choices made on the TV. On first use, remember the
         // current theme without clearing choices from an older launcher version.
@@ -204,7 +219,7 @@ final class Config {
                 Math.max(1, columns), Math.max(0, rowsBelow), animations, advancedEffects,
                 shamsi, moduleCards, reducedMotion, dockTitle, dockRow, reorderButton, vpn, homeSettings, showStats, library, background,
                 Math.max(0, Math.min(100, skyIntensity)), settingsKeycodes, settingsKeyPanel, wallpaper, applied,
-                festival);
+                festival, unsplashKey, prayerMethod, prayerSchool);
     }
 
     private static void syncThemeChoices(SharedPreferences choices, File dir, File config) {

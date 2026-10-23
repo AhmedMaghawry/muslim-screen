@@ -1,66 +1,37 @@
+<h1 align="center">☾ Muslim Screen</h1>
+
 <p align="center">
-  <a href="https://cleanyour.tv"><img src="https://raw.githubusercontent.com/Gathin23/cleanyourtv/main/docs/banner.png" alt="CleanYourTV. Your TV, minus the ads." width="800"></a>
+  <b>Prayer times, weather and a Quran verse over a live mosque photo</b> — an Android TV
+  screensaver, plus the ad-free Apple-TV-style launcher it lives in.
 </p>
 
 <p align="center">
-  <a href="https://cleanyour.tv">cleanyour.tv</a> ·
-  <a href="PROMPT.md">The prompt</a> ·
-  <a href="examples/">92 TV lists</a> ·
-  <a href="SHOWCASE.md">18 built on it</a> ·
-  <a href="https://x.com/gathint/status/2111379569030939102">The tweet</a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/Gathin23/cleanyourtv/stargazers"><img src="https://img.shields.io/github/stars/Gathin23/cleanyourtv?style=flat&cacheSeconds=1800&color=cfffcf&labelColor=15181e" alt="Stars"></a>
-  <a href="https://github.com/Gathin23/cleanyourtv/pulls?q=is%3Amerged"><img src="https://img.shields.io/github/issues-pr-closed/Gathin23/cleanyourtv?style=flat&cacheSeconds=1800&label=merged%20PRs&color=cfffcf&labelColor=15181e" alt="Merged PRs"></a>
-  <a href="https://github.com/Gathin23/cleanyourtv/network/members"><img src="https://img.shields.io/github/forks/Gathin23/cleanyourtv?style=flat&cacheSeconds=1800&color=cfffcf&labelColor=15181e" alt="Forks"></a>
-  <a href="https://github.com/Gathin23/cleanyourtv/graphs/contributors"><img src="https://img.shields.io/github/contributors/Gathin23/cleanyourtv?style=flat&cacheSeconds=1800&color=cfffcf&labelColor=15181e" alt="Contributors"></a>
+  <a href="https://github.com/AhmedMaghawry/muslim-screen/stargazers"><img src="https://img.shields.io/github/stars/AhmedMaghawry/muslim-screen?style=flat&cacheSeconds=1800&color=cfffcf&labelColor=15181e" alt="Stars"></a>
+  <a href="https://github.com/AhmedMaghawry/muslim-screen/forks"><img src="https://img.shields.io/github/forks/AhmedMaghawry/muslim-screen?style=flat&cacheSeconds=1800&color=cfffcf&labelColor=15181e" alt="Forks"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/licence-MIT-cfffcf?style=flat&labelColor=15181e" alt="MIT"></a>
-  <a href="https://buymeacoffee.com/gathint"><img src="https://img.shields.io/badge/support-%E2%9D%A4-ff5e8a?style=flat&labelColor=15181e" alt="Support, buy me a coffee"></a>
 </p>
 
-<p align="center">
-  <a href="https://www.producthunt.com/products/cleanyourtv?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-cleanyourtv">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1286319&theme=dark">
-      <img alt="CleanYourTV on Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1286319&theme=light">
-    </picture>
-  </a>
-</p>
+<!-- TODO: hero screenshot of Muslim Screen goes here once a privacy-reviewed capture is chosen —
+     the first one captured showed a real IP-derived city and live weather, so it was held back
+     rather than published automatically. See docs/muslim-screen.md for what it looks like today. -->
 
-Strip the bloatware from any Android TV or Google TV over Wi-Fi, and replace the ad-filled home
-screen with a clean launcher that looks like an Apple TV. **No root, no cable, nothing uninstalled,
-and a one-line restore if you change your mind.**
-
-<h3 align="center">92 TV models &nbsp;·&nbsp; 31 brands &nbsp;·&nbsp; 16 languages &nbsp;·&nbsp; 370 KB launcher</h3>
-
-<p align="center">
-  <sub><b>FEATURED IN</b></sub><br><br>
-  <a href="https://techcrunch.com/2026/10/19/people-are-using-ai-to-make-their-smart-tvs-dumb-again/"><img src="docs/press/techcrunch.png" height="34" alt="TechCrunch"></a>&nbsp;&nbsp;
-  <a href="https://mashable.com/tech/smart-tv-ads-claude-code-ai-cleanup"><img src="docs/press/mashable.png" height="34" alt="Mashable"></a>&nbsp;&nbsp;
-  <a href="https://itsfoss.com/news/debloat-smart-tv/"><img src="docs/press/itsfoss.png" height="34" alt="It's FOSS"></a>&nbsp;&nbsp;
-  <a href="https://techaeris.com/2026/10/18/android-tv-debloat-tvos-style-makeover/"><img src="docs/press/techaeris.png" height="34" alt="Techaeris"></a>&nbsp;&nbsp;
-  <a href="https://www.techtimes.co.uk/ai-smart-tv-bloatware-performance-fix-1809233"><img src="docs/press/techtimes.png" height="34" alt="Tech Times"></a>&nbsp;&nbsp;
-  <a href="https://tech.yahoo.com/ai/meta-ai/articles/developers-using-ai-strip-ads-185856468.html"><img src="docs/press/gadgetreview.png" height="34" alt="Gadget Review"></a>&nbsp;&nbsp;
-  <a href="https://techpp.com/2026/10/18/speed-up-android-tv-claude-code/"><img src="docs/press/techpp.png" height="34" alt="TechPP"></a>&nbsp;&nbsp;
-  <a href="https://www.frandroid.com/android/google-tv/3290159_google-tv-lent-et-envahi-par-les-pubs-le-projet-tv-vibehack-corrige-tout-ca-grace-a-lia-jai-tente-lexperience"><img src="docs/press/frandroid.png" height="34" alt="Frandroid"></a>&nbsp;&nbsp;
-  <a href="https://www.xboxygen.com/News/371393-sa-tv-xiaomi-affichait-des-pubs-partout-il-donne-son-modele-a-claude-code-qui-refait-toute-linterface"><img src="docs/press/xboxygen.png" height="34" alt="Xboxygen"></a>&nbsp;&nbsp;
-  <a href="https://itavisen.no/2026/10/19/vibekodet-bort-reklame-smart-tv/"><img src="docs/press/itavisen.png" height="34" alt="ITavisen"></a>&nbsp;&nbsp;
-  <a href="https://pplware.sapo.pt/inteligencia-artificial/nem-as-smart-tv-escaparam-a-febre-do-vibe-coding-a-televisao-a-medida-de-cada-utilizador/"><img src="docs/press/pplware.png" height="34" alt="Pplware"></a>&nbsp;&nbsp;
-  <a href="https://insmart.cz/android-tv-bez-reklam-ai-claude-code/"><img src="docs/press/insmart.png" height="34" alt="Insmart"></a>&nbsp;&nbsp;
-  <a href="https://inet.detik.com/consumer/d-8713172/kesal-tv-xiaomi-banyak-iklan-pria-ini-sulap-jadi-apple-tv-pakai-ai"><img src="docs/press/detikinet.png" height="34" alt="detikINET"></a>&nbsp;&nbsp;
-  <a href="https://www.iphonemod.net/clean-your-tv-android-tv-debloat-launcher.html"><img src="docs/press/iphonemod.png" height="34" alt="iPhoneMod"></a>
-</p>
-
+This is a fork of [CleanYourTV](https://github.com/Gathin23/cleanyourtv) — strips the bloatware
+from any Android TV or Google TV over Wi-Fi and replaces the ad-filled home screen with a clean,
+Apple-TV-style launcher — with one addition: **Muslim Screen**, a second screensaver that shows
+prayer times for your location, the weather, and a Quran verse that rotates every minute, over a
+live photo. Press **Back** at Home any time to preview it on demand, without waiting for the TV to
+go idle. **No root, no cable, nothing uninstalled, and a one-line restore if you change your mind.**
 
 ![Before: stock Google TV home with a sponsored ad. After: the Clean Your TV launcher](docs/stock-vs-new-side.jpg)
 
-> Vibe coded my parents' TV this afternoon! It was showing a sponsored ad before you could even get
-> to Netflix. Gave Claude Code the model number, it found the TV on wifi, removed 25 Xiaomi packages
-> and wrote a new launcher. Looks like an Apple TV now lol.
->
-> [@gathint, 17 October 2026](https://x.com/gathint/status/2111379569030939102). The replies are where
-> most of the TV lists here came from. The repo was called tv-vibehack until the 19th; old links work.
+## Muslim Screen
+
+- **Prayer times and the Hijri date**, calculated for your TV's location via [Aladhan](https://aladhan.com/prayer-times-api) — location comes from the TV's public IP (most TVs have no GPS), with the calculation method and Asr school configurable in `config.xml`.
+- **Weather now and an 8-point hourly forecast**, from [Open-Meteo](https://open-meteo.com) — no API key needed.
+- **A Quran verse that rotates every minute**, text auto-sized to fit, pulled from the full Quran (Arabic and Sahih International translation) via [alquran.cloud](https://alquran.cloud) and cached after the first fetch; falls back to a small bundled set if that's ever unreachable.
+- **A live background photo** from [Unsplash](https://unsplash.com/developers) (needs a free Access Key you provide yourself — see `unsplash_access_key` below) with photographer credit, or a plain gradient with no key.
+- **On demand or on idle**: pick "Muslim Screen" in the TV's screensaver settings for it to show automatically, and press **Back** at Home any time (otherwise a no-op there) to preview it instantly.
+- Every fetch fails on its own — no network, no location, or no Unsplash key just means that one section stays blank, never a broken screen. Full details and config keys: [`docs/muslim-screen.md`](docs/muslim-screen.md).
 
 ## How it works
 
@@ -289,6 +260,8 @@ the install script finds `~/Android/Sdk` and the `java` on your PATH.
 - **Module cards** let any TV app declare its own tile (label, caption, glow). The launcher asks you once per app, Keep hidden by default, and remembers the answer for that app's signing key and card name. Hold OK on Settings and choose Module cards to change your mind. How to make one: [`docs/modules.md`](docs/modules.md); the contract: [`docs/specs/card.md`](docs/specs/card.md).
 - **Clock screensaver**: a drifting clock over the glow, so nothing burns in. Pick "Clock" in the TV's screensaver settings, or over ADB:
   `tools/tv.py 'settings put secure screensaver_components com.gathin.tvhome/.ClockDream; settings put secure screensaver_enabled 1'`
+- **Muslim Screen**, a second screensaver: prayer times, weather and a Quran verse over a live mosque photo. Needs the network; every piece fails on its own rather than breaking the rest. Press Back at Home to preview it on demand. [`docs/muslim-screen.md`](docs/muslim-screen.md)
+  `tools/tv.py 'settings put secure screensaver_components com.gathin.tvhome/.SalaamDream; settings put secure screensaver_enabled 1'`
 - **Remote keys**: an optional accessibility service keeps the remote's Input button working on Google TV (`INPUT_KEY_SERVICE=1` at install), another fixes sticks whose Home key sends ALL_APPS and opens Settings from the remote's gear button, even one Android does not map (`HOME_KEY_SERVICE=1`, scancodes or keycodes in `config.xml`). With `settings_key_panel` the gear opens a [small quick settings panel](docs/quick-settings-panel.jpg) instead, over Home or any app: TV settings, Display, Network, Apps and Launcher settings.
 - **Navigation** is deliberate: Up and Down move one row, the top buttons never fall through to tiles and Down from them returns to the dock tile you came from, the last focused app is remembered, and installing or removing an app refreshes the tiles while Home is open.
 - **Artwork**: app banners load at xhdpi or better, so low-density TV UIs do not downsample them before the focus zoom.
@@ -382,28 +355,17 @@ control what goes on your TV. No prebuilt binaries.
 
 ## Contributing
 
-The most useful contribution is your TV's debloat list, so the next person with that model does
-not have to rediscover it. Launcher improvements and sharper prompt wording are welcome too.
-[CONTRIBUTING.md](CONTRIBUTING.md) has the format and the testing we ask for. Built something on
-top, a launcher, a port, a theme? Add it to [SHOWCASE.md](SHOWCASE.md), where eleven projects already
-live: a webOS port for LG, a Stremio shelf, a Hisense restyle, Fire TV launchers, an AirPlay installer.
-
-The people whose work is in this repo:
-
-<a href="https://github.com/Gathin23/cleanyourtv/graphs/contributors"><img src="https://contrib.rocks/image?repo=Gathin23/cleanyourtv&columns=16" alt="Contributors"></a>
-
-<details>
-<summary><strong>Star history</strong></summary>
-
-<a href="https://star-history.com/#Gathin23/cleanyourtv&Date"><img src="https://api.star-history.com/svg?repos=Gathin23/cleanyourtv&type=Date" alt="Star history chart" width="640"></a>
-
-</details>
+This repo is a fork of [Gathin23/cleanyourtv](https://github.com/Gathin23/cleanyourtv) — for
+anything not specific to Muslim Screen (a new TV's debloat list, launcher improvements, prompt
+wording), consider contributing there instead, so the whole community benefits. Muslim Screen
+improvements (more verses, another prayer-time source, translations) are welcome here.
+[CONTRIBUTING.md](CONTRIBUTING.md) has the format and the testing the upstream project asks for.
 
 ## Contact
 
-Questions about your TV: [GitHub Discussions](https://github.com/Gathin23/cleanyourtv/discussions).
-Press and partnerships: [hello@itsgathin.com](mailto:hello@itsgathin.com).
-Security issues: report them privately through the [Security tab](https://github.com/Gathin23/cleanyourtv/security), see [`SECURITY.md`](SECURITY.md).
+Issues and questions about this fork: [GitHub Issues](https://github.com/AhmedMaghawry/muslim-screen/issues).
+Security issues: report them privately through the [Security tab](https://github.com/AhmedMaghawry/muslim-screen/security), see [`SECURITY.md`](SECURITY.md).
+For the base launcher and debloat tool: [Gathin23/cleanyourtv](https://github.com/Gathin23/cleanyourtv).
 
 ## Licence
 

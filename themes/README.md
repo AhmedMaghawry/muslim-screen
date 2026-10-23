@@ -55,6 +55,9 @@ is ignored, and a file that doesn't parse is ignored as a whole, so a theme can 
 | `accent_color` | `#RRGGBB` | Colour of the focus glow while the festive skin is on; diya gold if not set |
 | `settings_key_keycodes` | list of keycodes | Remote buttons that open Settings, for `HomeKeyService` (TCL Google TV gear: `[83]`) |
 | `settings_key_panel` | bool | Those buttons open a small quick settings panel (TV settings, Display, Network, Apps, Launcher settings) instead of the TV's Settings |
+| `unsplash_access_key` | string | Unsplash Access Key for Muslim Screen's live background photo; empty shows a plain gradient instead. See [docs/muslim-screen.md](../docs/muslim-screen.md) |
+| `prayer_calc_method` | 0 to 23 | Aladhan prayer-time calculation method for Muslim Screen; 3 (Muslim World League) by default |
+| `prayer_asr_school` | 0 or 1 | Asr juristic school for Muslim Screen: 0 Standard (default), 1 Hanafi |
 
 ## Wallpapers
 

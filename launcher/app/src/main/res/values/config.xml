@@ -118,4 +118,15 @@
          sets its opacity. Around 60 reads clearly without hiding a wallpaper. Can also be set with
          "sky_intensity": 60 in a theme's config.json. -->
     <integer name="sky_intensity">0</integer>
+
+    <!-- Muslim Screen (SalaamDream): prayer times, weather and a Quran verse over a live mosque photo.
+         Needs an Unsplash access key (unsplash.com/developers, a free account is enough) to fetch the
+         background photo; empty shows a plain dark gradient instead. Never commit a real key here —
+         set it locally or push it with a theme's config.json ("unsplash_access_key": "..."). -->
+    <string name="unsplash_access_key" translatable="false"></string>
+    <!-- Aladhan calculation method (api.aladhan.com/v1/methods), e.g. 3 = Muslim World League,
+         4 = Umm al-Qura, 8 = Gulf Region, 10 = Qatar, 13 = Diyanet. 3 is a reasonable worldwide default. -->
+    <integer name="prayer_calc_method">3</integer>
+    <!-- Asr juristic method: 0 = Standard (Shafi/Maliki/Hanbali), 1 = Hanafi. -->
+    <integer name="prayer_asr_school">0</integer>
 </resources>

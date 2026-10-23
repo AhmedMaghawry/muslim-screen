@@ -909,7 +909,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     @Override
     public void onBackPressed() {
-        // Home screen: Back goes nowhere.
+        // Home screen: Back otherwise goes nowhere, so it previews Muslim Screen instead.
+        startActivity(new Intent(this, SalaamPreviewActivity.class));
     }
 
     // ---- glass highlight -------------------------------------------------------------------------
