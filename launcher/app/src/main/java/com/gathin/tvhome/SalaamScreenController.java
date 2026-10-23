@@ -25,7 +25,6 @@ import java.util.concurrent.Executors;
  */
 final class SalaamScreenController {
 
-    private static final String[] PRAYER_ORDER = {"Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"};
     private static final long TICK_MS = 30_000L;
     private static final long VERSE_TICK_MS = 60_000L;
 
@@ -158,11 +157,11 @@ final class SalaamScreenController {
     private void applyPrayerTimes(PrayerTimes prayer, Config config, GeoLocation geo) {
         this.prayerTimes = prayer;
         hijriLine.setText(prayer.hijriDate);
-        timeFajr.setText(display(prayer.times.get("Fajr")));
-        timeDhuhr.setText(display(prayer.times.get("Dhuhr")));
-        timeAsr.setText(display(prayer.times.get("Asr")));
-        timeMaghrib.setText(display(prayer.times.get("Maghrib")));
-        timeIsha.setText(display(prayer.times.get("Isha")));
+        timeFajr.setText(PrayerTimes.display(prayer.times.get("Fajr")));
+        timeDhuhr.setText(PrayerTimes.display(prayer.times.get("Dhuhr")));
+        timeAsr.setText(PrayerTimes.display(prayer.times.get("Asr")));
+        timeMaghrib.setText(PrayerTimes.display(prayer.times.get("Maghrib")));
+        timeIsha.setText(PrayerTimes.display(prayer.times.get("Isha")));
 
         String region = geo != null && !geo.country.isEmpty() ? geo.country : "World";
         String school = config.prayerAsrSchool == 1 ? "Hanafi Asr" : "Standard Asr";
@@ -197,36 +196,14 @@ final class SalaamScreenController {
         if (prayerTimes == null) return;
         Calendar now = Calendar.getInstance();
         int nowMinutes = now.get(Calendar.HOUR_OF_DAY) * 60 + now.get(Calendar.MINUTE);
+        PrayerTimes.Next next = prayerTimes.next(nowMinutes);
 
-        String nextName = null;
-        int nextMinutes = -1;
-        for (String name : PRAYER_ORDER) {
-            String raw = prayerTimes.times.get(name);
-            if (raw == null) continue;
-            int minutes = minutesOf(raw);
-            if (minutes > nowMinutes) {
-                nextName = name;
-                nextMinutes = minutes;
-                break;
-            }
-        }
-        boolean tomorrow = false;
-        if (nextName == null) {
-            // Past Isha: tomorrow's Fajr is next.
-            nextName = PRAYER_ORDER[0];
-            String raw = prayerTimes.times.get(nextName);
-            if (raw != null) {
-                nextMinutes = minutesOf(raw) + 24 * 60;
-                tomorrow = true;
-            }
-        }
+        highlightRow(next == null ? null : next.name);
+        if (next == null) return;
 
-        highlightRow(nextName);
-        if (nextMinutes < 0) return;
-
-        nextPrayerName.setText(nextName);
-        nextPrayerCountdown.setText(formatCountdown(nextMinutes - nowMinutes));
-        nextPrayerAt.setText((tomorrow ? "Tomorrow at " : "At ") + display(prayerTimes.times.get(nextName)));
+        nextPrayerName.setText(next.name);
+        nextPrayerCountdown.setText(PrayerTimes.formatCountdown(next.remainingMinutes));
+        nextPrayerAt.setText((next.tomorrow ? "Tomorrow at " : "At ") + PrayerTimes.display(next.at));
     }
 
     private void highlightRow(String name) {
@@ -240,26 +217,6 @@ final class SalaamScreenController {
     private void setHighlighted(LinearLayout row, boolean highlighted) {
         if (row == null) return;
         row.setBackground(highlighted ? context.getDrawable(R.drawable.salaam_next_prayer_bg) : null);
-    }
-
-    private static int minutesOf(String hhmm) {
-        int colon = hhmm.indexOf(':');
-        return Integer.parseInt(hhmm.substring(0, colon)) * 60 + Integer.parseInt(hhmm.substring(colon + 1));
-    }
-
-    private static String formatCountdown(int totalMinutes) {
-        int h = totalMinutes / 60;
-        int m = totalMinutes % 60;
-        return h > 0 ? h + "h " + m + "m" : m + "m";
-    }
-
-    /** "HH:mm" (24h) to "h:mm a", e.g. "04:19" -> "4:19 AM". */
-    private static String display(String hhmm) {
-        if (hhmm == null) return "—";
-        int minutes = minutesOf(hhmm);
-        int h24 = minutes / 60;
-        int h12 = h24 % 12 == 0 ? 12 : h24 % 12;
-        return String.format(Locale.US, "%d:%02d %s", h12, minutes % 60, h24 < 12 ? "AM" : "PM");
     }
 
     private static String nowDisplay() {

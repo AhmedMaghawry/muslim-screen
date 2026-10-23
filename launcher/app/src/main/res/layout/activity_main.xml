@@ -214,6 +214,23 @@
             </LinearLayout>
         </RelativeLayout>
 
+        <!-- Compact "next prayer" line (HomePrayerStatus); gone and nothing is fetched until it loads,
+             so a TV with no network or no location still shows a plain Home. -->
+        <TextView
+            android:id="@+id/prayerStatus"
+            android:gravity="left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textColor="#B3C99A5B"
+            android:textSize="14sp"
+            android:fontFamily="@font/outfit_medium"
+            android:letterSpacing="0.02"
+            android:focusable="false"
+            android:visibility="gone" />
+
         <!-- The wrapper clips at the grid's edge; the grid itself must not clip so scaled tiles can overflow their cells. -->
         <FrameLayout
             android:layout_width="match_parent"
