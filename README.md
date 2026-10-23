@@ -11,9 +11,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/licence-MIT-cfffcf?style=flat&labelColor=15181e" alt="MIT"></a>
 </p>
 
-<!-- TODO: hero screenshot of Muslim Screen goes here once a privacy-reviewed capture is chosen —
-     the first one captured showed a real IP-derived city and live weather, so it was held back
-     rather than published automatically. See docs/muslim-screen.md for what it looks like today. -->
+<!-- TODO: add a screenshot here. See docs/muslim-screen.md for what it looks like today. -->
 
 This is a fork of [CleanYourTV](https://github.com/Gathin23/cleanyourtv) — strips the bloatware
 from any Android TV or Google TV over Wi-Fi and replaces the ad-filled home screen with a clean,
