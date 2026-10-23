@@ -11,15 +11,17 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * A compact "next prayer" status line on Home, e.g. "Asr in 2h 40m  ·  3:24 PM" — kept current
- * only while Home is on screen, same as {@code show_stats}. Location comes from the TV's public
- * IP; if that fails, or Aladhan does, the line just stays hidden rather than showing stale data.
+ * A compact "next prayer" status line on Home, e.g. "Asr in 2h 40m  ·  3:24 PM", plus the Islamic
+ * Hijri date under the Gregorian one — both kept current only while Home is on screen, same as
+ * {@code show_stats}. Location comes from the TV's public IP; if that fails, or Aladhan does, both
+ * lines just stay hidden rather than showing stale data.
  */
 final class HomePrayerStatus {
     private static final long TICK_MS = 30_000L;
 
     private final Context context;
-    private final TextView label;
+    private final TextView statusLabel;
+    private final TextView hijriLabel;
     private final Handler handler = new Handler(Looper.getMainLooper());
     private ExecutorService network;
     private PrayerTimes prayerTimes;
@@ -32,9 +34,10 @@ final class HomePrayerStatus {
         }
     };
 
-    HomePrayerStatus(Context context, TextView label) {
+    HomePrayerStatus(Context context, TextView statusLabel, TextView hijriLabel) {
         this.context = context;
-        this.label = label;
+        this.statusLabel = statusLabel;
+        this.hijriLabel = hijriLabel;
     }
 
     /** Fetches fresh each time (Home can stay resumed for days), then ticks the countdown. */
@@ -49,6 +52,8 @@ final class HomePrayerStatus {
                     : null;
             if (prayer != null) handler.post(() -> {
                 prayerTimes = prayer;
+                hijriLabel.setVisibility(View.VISIBLE);
+                hijriLabel.setText(prayer.hijriDate);
                 update();
             });
         });
@@ -58,18 +63,19 @@ final class HomePrayerStatus {
         handler.removeCallbacksAndMessages(null);
         if (network != null) network.shutdownNow();
         prayerTimes = null;
-        label.setVisibility(View.GONE);
+        statusLabel.setVisibility(View.GONE);
+        hijriLabel.setVisibility(View.GONE);
     }
 
     private void update() {
         PrayerTimes.Next next = prayerTimes == null ? null
                 : prayerTimes.next(nowMinutes());
         if (next == null) {
-            label.setVisibility(View.GONE);
+            statusLabel.setVisibility(View.GONE);
             return;
         }
-        label.setVisibility(View.VISIBLE);
-        label.setText(next.name + " in " + PrayerTimes.formatCountdown(next.remainingMinutes)
+        statusLabel.setVisibility(View.VISIBLE);
+        statusLabel.setText(next.name + " in " + PrayerTimes.formatCountdown(next.remainingMinutes)
                 + "  ·  " + PrayerTimes.display(next.at));
     }
 

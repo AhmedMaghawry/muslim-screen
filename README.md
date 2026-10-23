@@ -31,7 +31,8 @@ go idle. **No root, no cable, nothing uninstalled, and a one-line restore if you
 - **A Quran verse that rotates every minute**, text auto-sized to fit, pulled from the full Quran (Arabic and Sahih International translation) via [alquran.cloud](https://alquran.cloud) and cached after the first fetch; falls back to a small bundled set if that's ever unreachable.
 - **A live background photo** from [Unsplash](https://unsplash.com/developers) (needs a free Access Key you provide yourself — see `unsplash_access_key` below) with photographer credit, or a plain gradient with no key.
 - **On demand or on idle**: pick "Muslim Screen" in the TV's screensaver settings for it to show automatically, and press **Back** at Home any time (otherwise a no-op there) to preview it instantly.
-- **A next-prayer line on Home itself**: "Dhuhr in 29m · 1:25 PM" in the gap below the clock, kept current while Home is on screen, gone if the fetch fails.
+- **A next-prayer line on Home itself**: "Dhuhr in 29m · 1:25 PM" in the gap below the clock, kept current while Home is on screen, gone if the fetch fails. The Hijri date shows under the Gregorian one the same way.
+- **A rotating reminder on Home**: "اذكر الله" and "صلِّ على النبي", alternating every 5 minutes — no network, so it's always there.
 - Every fetch fails on its own — no network, no location, or no Unsplash key just means that one section stays blank, never a broken screen. Full details and config keys: [`docs/muslim-screen.md`](docs/muslim-screen.md).
 
 ## How it works

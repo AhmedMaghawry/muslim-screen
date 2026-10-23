@@ -116,6 +116,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private boolean showStats;
     /** Compact "next prayer" line below the dock row; kept current only while Home is resumed. */
     private HomePrayerStatus prayerStatus;
+    /** Rotates between two short Arabic reminders every 5 minutes; no network, always on. */
+    private DhikrRotator dhikrRotator;
     private boolean shamsi;
     /** Optional time-of-day backdrop (config.xml, sky_intensity); 0 keeps it hidden. */
     private SkyView sky;
@@ -277,7 +279,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         shamsiDate = findViewById(R.id.shamsiDate);
         stats = findViewById(R.id.stats);
         showStats = cfg.showStats;
-        prayerStatus = new HomePrayerStatus(this, findViewById(R.id.prayerStatus));
+        prayerStatus = new HomePrayerStatus(this, findViewById(R.id.prayerStatus), findViewById(R.id.hijriDate));
+        dhikrRotator = new DhikrRotator(findViewById(R.id.dhikrLine));
         shamsi = cfg.shamsiDate;
         if (shamsi) {
             shamsiDate.setVisibility(View.VISIBLE);
@@ -582,6 +585,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         updateInputsButton();
         if (showStats) startStats();
         prayerStatus.start();
+        dhikrRotator.start();
         sky.update();
         handler.postDelayed(minuteTick, MINUTE_MS);
         if (festive && diya != null) {
@@ -681,6 +685,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         handler.removeCallbacks(minuteTick);
         stopStats();
         prayerStatus.stop();
+        dhikrRotator.stop();
         if (diya != null) diya.stop();
         cancelPendingFocusScroll();
         // Nothing of ours stays on screen over another app; an undecided prompt simply returns next time.

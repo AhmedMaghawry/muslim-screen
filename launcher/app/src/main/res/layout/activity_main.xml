@@ -152,6 +152,22 @@
                             android:fontFamily="@font/outfit_regular"
                             android:letterSpacing="0.14"
                             android:textAllCaps="true" />
+
+                        <!-- Islamic Hijri date (HomePrayerStatus, same Aladhan fetch as prayerStatus),
+                             e.g. "12 Jumada I 1448 AH". Gone until it loads, or if the fetch fails. -->
+                        <TextView
+                            android:id="@+id/hijriDate"
+                            android:gravity="left"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:singleLine="true"
+                            android:ellipsize="end"
+                            android:textColor="#B3C99A5B"
+                            android:textSize="13sp"
+                            android:fontFamily="@font/outfit_regular"
+                            android:letterSpacing="0.06"
+                            android:visibility="gone" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -230,6 +246,22 @@
             android:letterSpacing="0.02"
             android:focusable="false"
             android:visibility="gone" />
+
+        <!-- Rotates between two short reminders every 5 minutes (DhikrRotator); no network, so it's
+             always on. -->
+        <TextView
+            android:id="@+id/dhikrLine"
+            android:gravity="left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textDirection="rtl"
+            android:textColor="#80FFFFFF"
+            android:textSize="15sp"
+            android:fontFamily="@font/outfit_medium"
+            android:focusable="false" />
 
         <!-- The wrapper clips at the grid's edge; the grid itself must not clip so scaled tiles can overflow their cells. -->
         <FrameLayout
